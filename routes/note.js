@@ -20,22 +20,22 @@ router.get("/", async(req,res)=>{
     }
 })
 
-const verifyToken = (req,res,next)=>{
+// const verifyToken = (req,res,next)=>{
 
-    const authHeader = req.headers.authorization;
-    if(authHeader){
-        jwt.verify(authHeader, "secret", (err)=>{
-            if(err){
-                return res.sendStatus(403);
-            }
-            next();
-        })
-    }else{
-        res.sendStatus(401);
-    }
-};
+//     const authHeader = req.headers.authorization;
+//     if(authHeader){
+//         jwt.verify(authHeader, "secret", (err)=>{
+//             if(err){
+//                 return res.sendStatus(403);
+//             }
+//             next();
+//         })
+//     }else{
+//         res.sendStatus(401);
+//     }
+// };
 
-router.post("/", verifyToken , async(req,res)=>{
+router.post("/", async(req,res)=>{
 
     const note = new NoteModel({
         _id: new mongoose.Types.ObjectId(),
